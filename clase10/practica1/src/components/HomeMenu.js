@@ -1,33 +1,24 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import Profile from '../screens/Profile';
-import Home from '../screens/home';
-import NavegacionTab from "./NavegacionTab";
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { FontAwesome} from "@expo/vector-icons"
+import React, { Component } from "react";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Entypo from '@expo/vector-icons/Entypo';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import Home from "../screens/Home"
+import Profile from "../screens/Profile"
+const Tab = createBottomTabNavigator()
 
-const Tab=createBottomTabNavigator();
 
-class HomeMenu extends component {
+class HomeMenu extends Component{
     constructor(props){
         super(props)
     }
     render(){
-        
-
-  return (
-    <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Profile" component={Profile} options={
-            {tabBarIcon: ()=> <FontAwesome6 name="person-rifle" size={24} color="black" />, headerShown:false }}/>
-        <Tab.Screen name="Home" component={Home} options={
-            {tabBarIcon: ()=> <Entypo name="home" size={24} color="black" />, headerShown:false} }/>
-      </Tab.Navigator>
-    </NavigationContainer>
-  );
-}}
+        return(
+            <Tab.Navigator>
+                <Tab.Screen name="Home" component={Home} options={{tabBarIcon: ()=><Entypo name="home" size={24} color="black" />}}/>
+                <Tab.Screen name="Profile" component={Profile} options={{tabBarIcon: ()=> <MaterialIcons name="account-circle" size={24} color="black" />}}/>
+            </Tab.Navigator>
+        )
+    }
+}
 
 export default HomeMenu
-
